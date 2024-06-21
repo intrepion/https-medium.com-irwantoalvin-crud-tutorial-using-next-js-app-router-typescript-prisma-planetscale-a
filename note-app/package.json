@@ -19,7 +19,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
+    "lint": "next lint --fix",
+    "lint:check": "next lint",
     "start": "next start"
   },
   "version": "0.1.0"
