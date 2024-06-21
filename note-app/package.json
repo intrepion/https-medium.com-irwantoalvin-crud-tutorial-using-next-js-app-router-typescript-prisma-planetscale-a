@@ -22,6 +22,8 @@
     "dev": "next dev",
     "lint": "next lint --fix",
     "lint:check": "next lint",
+    "prettier": "prettier --write --ignore-unknown .",
+    "prettier:check": "prettier --check --ignore-unknown .",
     "start": "next start"
   },
   "version": "0.1.0"
