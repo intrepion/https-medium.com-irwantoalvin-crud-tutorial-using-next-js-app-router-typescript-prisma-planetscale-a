@@ -27,8 +27,8 @@ jobs:
       - name: Check linting
         run: npm run lint:check
 
-      # - name: Check formatting
-      #   run: npm run prettier:check
+      - name: Check formatting
+        run: npm run prettier:check
 
       - name: Build application
         run: npm run build --if-present
