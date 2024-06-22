@@ -18,3 +18,28 @@ export const POST = async (req: NextRequest) => {
     note,
   });
 };
+
+// Action to delete
+export const DELETE = async (req: NextRequest) => {
+  const url = new URL(req.url).searchParams;
+  const id = Number(url.get("id")) || 0;
+
+  const note = await prisma.note.delete({
+    where: {
+      id: id,
+    },
+  });
+
+  if (!note) {
+    return NextResponse.json(
+      {
+        message: "Error",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+
+  return NextResponse.json({});
+};
