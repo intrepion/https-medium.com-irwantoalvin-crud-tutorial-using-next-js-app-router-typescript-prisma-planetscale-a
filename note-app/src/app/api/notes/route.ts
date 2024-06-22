@@ -1,7 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import { unstable_noStore } from "next/cache";
 
 const prisma = new PrismaClient();
+
+// Action to read
+export const GET = async (req: NextRequest) => {
+  unstable_noStore();
+  const notes = await prisma.note.findMany({});
+
+  return NextResponse.json({
+    notes,
+  });
+};
 
 // Action to create
 export const POST = async (req: NextRequest) => {
@@ -42,4 +53,24 @@ export const DELETE = async (req: NextRequest) => {
   }
 
   return NextResponse.json({});
+};
+
+// Action to update or edit
+export const PUT = async (req: NextRequest) => {
+  const { title, content, id } = await req.json();
+
+  const note = await prisma.note.update({
+    where: {
+      id: Number(id),
+    },
+
+    data: {
+      title,
+      content,
+    },
+  });
+
+  return NextResponse.json({
+    note,
+  });
 };
