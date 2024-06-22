@@ -15,3 +15,12 @@ generator client {
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
   provider = "prisma-client-js"
 }
+
+model Note {
+    id        Int      @id @default(autoincrement())
+    title     String   @db.VarChar(255)
+    content   String?
+    published Boolean  @default(true)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
