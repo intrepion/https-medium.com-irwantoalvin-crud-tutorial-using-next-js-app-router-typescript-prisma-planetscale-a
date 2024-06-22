@@ -28,12 +28,14 @@ export default function Page({ note }: Props) {
       <div className="flex justify-end gap-3 mt-4 text-sm">
         <button
           className="font-semibold"
+          data-cy={"button-update-" + note.id}
           onClick={() => router.push(`/update/${note.id}`)}
         >
           Update
         </button>
         <button
           className="font-semibold text-red-500"
+          data-cy={"button-delete-" + note.id}
           onClick={() => handleDelete(note.id)}
         >
           Delete
